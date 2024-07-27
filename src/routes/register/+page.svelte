@@ -5,38 +5,41 @@
 	export let data: PageData;
 </script>
 
-<form method="POST">
-	<label>
-		email:
+<div class="col-span-12 text-center flex flex-col justify-center items-center gap-6 mt-16">
+	<h1 class="text-6xl font-bold text-center">Mentorpreneur</h1>
+	<p class="text-3xl text-center mb-4">Connect. Mentor. Grow.</p>
+	<form method="POST" class="flex flex-col gap-4">
 		<input
+			class="w-80 h-8 text-center bg-white border-2 border-black rounded-full placeholder:text-black"
+			name="name"
+			type="text"
+			placeholder="full name"
+			required
+		/>
+		<input
+			class="w-80 h-8 text-center bg-white border-2 border-black rounded-full placeholder:text-black"
 			name="email"
 			type="email"
-			autocomplete="off"
+			placeholder="email"
+			required
 		/>
-	</label>
-	<label>
-		password:
 		<input
+			class="w-80 h-8 text-center bg-white border-2 border-black rounded-full placeholder:text-black"
 			name="password"
 			type="password"
-			autocomplete="off"
+			placeholder="password"
+			required
 		/>
-	</label>
-	<label>
-		name:
 		<input
-			name="name"
-			type="name"
-			autocomplete="off"
+			class="w-80 h-8 text-center bg-white border-2 border-black rounded-full placeholder:text-black"
+			name="confirm-password"
+			type="password"
+			placeholder="confirm password"
+			required
 		/>
-	</label>
-	<label>
-		bio:
-		<input
-			name="bio"
-			type="text"
-			autocomplete="off"
-		/>
-	</label>
-	<button>Submit</button>
-</form>
+	</form>
+	<div class="flex gap-4 justify-center items-center">
+		<input class="size-4" name="isMentor" type="checkbox" value="true"><label for="isMentor">Are you registering as a mentor?</label>
+	</div>
+	<button class="mt-4 py-2 px-4 bg-black text-white rounded-full">Register</button>
+</div>

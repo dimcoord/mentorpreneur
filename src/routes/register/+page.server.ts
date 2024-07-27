@@ -9,14 +9,17 @@ export const load = (async () => {
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-	register: async ({request}) => {
+	default: async ({request}) => {
 		const data = await request.formData();
+		if(data.get('password') !== data.get('confirm-password')){
+			throw console.error();
+		}
 		await prisma.user.create({
 			data: {
 			  email: data.get('email') as string,
 			  password: data.get('password') as string,
 			  name: data.get('name') as string,
-			  bio: data.get('bio') as string,
+			  isMentor: data.get('isMentor') as unknown as boolean
 			//   Experience: {
 			// 	create: {
 			// 		company: data.get('experience-company') as string,
