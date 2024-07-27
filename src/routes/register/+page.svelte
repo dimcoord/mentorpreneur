@@ -30,16 +30,16 @@
 			placeholder="password"
 			required
 		/>
-		<input
+		<!-- <input
 			class="w-80 h-8 text-center bg-white border-2 border-black rounded-full placeholder:text-black"
 			name="confirm-password"
 			type="password"
 			placeholder="confirm password"
 			required
-		/>
+		/> -->
+		<div class="flex gap-4 justify-center items-center">
+			<input class="size-4" name="isMentor" type="checkbox" value="true"><label for="isMentor">Are you registering as a mentor?</label>
+		</div>
+		<button type="submit" class="mt-4 py-2 px-4 bg-black text-white rounded-full">Register</button>
 	</form>
-	<div class="flex gap-4 justify-center items-center">
-		<input class="size-4" name="isMentor" type="checkbox" value="true"><label for="isMentor">Are you registering as a mentor?</label>
-	</div>
-	<button class="mt-4 py-2 px-4 bg-black text-white rounded-full">Register</button>
 </div>

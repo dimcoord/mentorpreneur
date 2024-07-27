@@ -20,8 +20,9 @@
 			type="password"
 			placeholder="password"
 		/>
+		<button class="mt-4 py-2 px-4 bg-black text-white rounded-full">Login</button>
 	</form>
-	<button class="mt-4 py-2 px-4 bg-black text-white rounded-full">Login</button>
+	
 </div>
 
 

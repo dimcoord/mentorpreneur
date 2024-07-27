@@ -11,15 +11,15 @@ export const load = (async () => {
 export const actions = {
 	default: async ({request}) => {
 		const data = await request.formData();
-		if(data.get('password') !== data.get('confirm-password')){
-			throw console.error();
-		}
+		// if(data.get('password') !== data.get('confirm-password')){
+		// 	throw console.error();
+		// }
 		await prisma.user.create({
 			data: {
 			  email: data.get('email') as string,
 			  password: data.get('password') as string,
 			  name: data.get('name') as string,
-			  isMentor: data.get('isMentor') as unknown as boolean
+			  isMentor: Boolean(data.get('isMentor')) as boolean
 			//   Experience: {
 			// 	create: {
 			// 		company: data.get('experience-company') as string,
