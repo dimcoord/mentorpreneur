@@ -1,0 +1,43 @@
+  name     String?
+  bio      String?
+  company  String?
+  socials  String?
+  Mentor   Mentor?
+  Schedule Schedule?
+}
+
+model Categories {
+  id         Int      @id @default(autoincrement())
+  industry   String
+  discipline String
+  expertise  String   @unique
+  Mentor     Mentor[]
+}
+
+model Mentor {
+  id              Int        @id @default(autoincrement())
+  user            User       @relation(fields: [userId], references: [id])
+  userId          Int        @unique
+  expertise       Categories @relation(fields: [mentorExpertise], references: [expertise])
+  mentorExpertise String
+  Schedule        Schedule?
+}
+
+model Experience {
+  id        Int       @id @default(autoincrement())
+  company   String?
+  position  String?
+  startDate DateTime?
+  endDate   DateTime?
+}
+
+model Schedule {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int      @unique
+  mentor    Mentor   @relation(fields: [mentorId], references: [id])
+  mentorId  Int      @unique
+  startDate DateTime @default(now())
+  endDate   DateTime
+  topic     String?
+}
