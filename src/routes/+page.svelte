@@ -1,4 +1,3 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-
-<h1 class="font-extrabold text-3xl">Gyatt</h1>
+<div class="col-span-12">
+	<h1 class="font-extrabold text-3xl">Mentorpreneur</h1>
+</div>
