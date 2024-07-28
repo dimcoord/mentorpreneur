@@ -15,41 +15,61 @@ datasource db {
 }
 
 model User {
-  id         String       @id @default(uuid())
-  email      String       @unique
-  password   String
-  isMentor   Boolean      @default(false)
-  name       String?
+  id             String     @id @unique @default(uuid())
+  email          String     @unique
+  password       String
+  mentorId       Mentor?    @relation(fields: [mentorUsername], references: [username])
+  mentorUsername String?    @unique
+  name           String
+  Review         Review[]
+  Schedule       Schedule[]
+}
+
+model Mentor {
+  username   String       @id @unique @default(uuid())
+  linkedin   String?
   bio        String?
-  Experience Experience[]
   Category   Category[]
+  Review     Review[]
+  User       User?
+  Experience Experience[]
   Schedule   Schedule[]
 }
 
 model Category {
   id         Int      @id @default(autoincrement())
-  industry   String[]
-  discipline String[]
-  expertise  String[]
-  user       User?    @relation(fields: [userId], references: [id])
-  userId     String?
+  discipline String
+  expertise  String   @unique
+  Mentor     Mentor[]
 }
 
 model Experience {
-  id        Int       @id @default(autoincrement())
-  user      User?     @relation(fields: [userId], references: [id])
-  userId    String?
-  company   String?
-  position  String?
-  startDate DateTime? @default(now())
-  endDate   DateTime? @default(now())
+  id             Int       @id @default(autoincrement())
+  mentor         Mentor?   @relation(fields: [mentorUsername], references: [username])
+  mentorUsername String?
+  company        String?
+  position       String?
+  startDate      DateTime? @default(now())
+  endDate        DateTime? @default(now())
 }
 
 model Schedule {
-  id        Int       @id @default(autoincrement())
-  startDate DateTime? @default(now())
-  endDate   DateTime? @default(now())
-  topic     String?
-  user      User?     @relation(fields: [userId], references: [id])
-  userId    String?
+  startDate      DateTime? @default(now())
+  endDate        DateTime? @default(now())
+  topic          String?
+  user           User      @relation(fields: [userId], references: [id])
+  userId         String
+  mentor         Mentor    @relation(fields: [mentorUsername], references: [username])
+  mentorUsername String
+
+  @@id([userId, mentorUsername])
+}
+
+model Review {
+  reviewer       User   @relation(fields: [reviewerId], references: [id])
+  reviewerId     String
+  mentor         Mentor @relation(fields: [mentorUsername], references: [username])
+  mentorUsername String
+
+  @@id([reviewerId, mentorUsername])
 }
