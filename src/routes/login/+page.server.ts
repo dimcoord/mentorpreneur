@@ -18,7 +18,6 @@ export const actions = {
 				email: data.get('email') as string
 			}
 		});
-		console.log(user);
 		if (!user) {
 			console.log('user not found');
 			error(404, 'User Not Found');
