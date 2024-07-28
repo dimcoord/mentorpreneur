@@ -5,12 +5,16 @@
 
 	import { Toaster } from '$lib/components/ui/sonner';
 	import { Button } from '$lib/components/ui/button';
+	import { afterNavigate } from '$app/navigation';
+	import { tick } from 'svelte';
 
 	export let data: LayoutData;
 	let { user } = data;
 
 	$: hasLogoOnHeader = $page.route.id !== '/' && $page.route.id !== '/mentors';
 	$: isAboutPage = $page.route.id === '/about';
+
+	afterNavigate(async () => await tick());
 </script>
 
 <svelte:head>
@@ -29,6 +33,7 @@
 			<Button size="sm" href="/login" class="text-xs">Login</Button>
 		{:else}
 			<Button size="sm" href="/account" class="text-xs">My Account</Button>
+			<Button size="sm" href="/logout" variant="destructive" class="text-xs">Logout</Button>
 		{/if}
 		{#if !isAboutPage}
 			<Button size="sm" href="/about" class="text-xs">About Us</Button>
