@@ -7,7 +7,6 @@ export const load = (async () => {
 	return {};
 }) satisfies PageServerLoad;
 
-/** @type {import('./$types').Actions} */
 export const actions = {
 	register: async ({ request }) => {
 		const data = await request.formData();
@@ -41,4 +40,4 @@ export const actions = {
 			}
 		});
 	}
-};
+} satisfies Actions;
