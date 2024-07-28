@@ -19,13 +19,12 @@
 
 <div class="mb-4 grid grid-col-1 col-span-12 gap-2">
 	<div class="flex gap-2 items-baseline">
-		<p>Discipline:</p>
+		<Button size="sm" variant="outline">All</Button>
 		{#each disciplines as discipline}
 			<Button size="sm" variant="outline">{discipline}</Button>
 		{/each}
 	</div>
 	<div class="flex gap-2 items-baseline">
-		<p>Expertise:</p>
 		{#each expertises as expertise}
 			<Button size="sm" variant="outline">{expertise}</Button>
 		{/each}
