@@ -66,6 +66,7 @@ model Schedule {
 }
 
 model Review {
+  messsage       String
   reviewer       User   @relation(fields: [reviewerId], references: [id])
   reviewerId     String
   mentor         Mentor @relation(fields: [mentorUsername], references: [username])
