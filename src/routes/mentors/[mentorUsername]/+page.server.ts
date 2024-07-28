@@ -20,7 +20,6 @@ export const load = (async ({ params }) => {
 		}
 	});
 	if (!mentor) error(404, 'Mentor Not Found');
-	console.log(mentor);
 	return {
 		mentor,
 		reviewers
